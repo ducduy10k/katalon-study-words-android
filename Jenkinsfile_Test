@@ -18,7 +18,7 @@ pipeline {
                      "/Users/nguyenduy/Downloads/Katalon_Studio_Engine_MacOS-10.4.0/Katalon Studio Engine.app/Contents/MacOS/katalonc" \
                      -noSplash \
                      -runMode=console \
-                     -projectPath="/Users/nguyenduy/Desktop/Tester/Katalon/study_words_android_katalon/Android Mobile Tests with Katalon Studio.prj" \
+                     -projectPath="/Users/nguyenduy/.jenkins/workspace/katalon-study-words-android/Android Mobile Tests with Katalon Studio.prj" \
                      -retry=0 -testSuitePath="Test Suites/Open App" -browserType="Android" -deviceId="2bc37605" -executionProfile="default" \
                       --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true \
                      -appiumDirectory="/Users/nguyenduy/.nvm/versions/node/v24.11.0/lib/node_modules/appium" -apiKey=6f0b4758-79f6-4afa-ae87-d25761e60996
