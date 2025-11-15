@@ -6,7 +6,7 @@ pipeline {
                 echo 'Checkout source code from GitHub...'
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/master']],
-                    userRemoteConfigs: [[url: 'https://github.com/ducduy10k/katalon-mycv.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/ducduy10k/katalon-study-words-android.git']]
                 ])
             }
         }
@@ -19,7 +19,8 @@ pipeline {
                      -noSplash \
                      -runMode=console \
                      -projectPath="/Users/nguyenduy/Desktop/Tester/Katalon/study_words_android_katalon/Android Mobile Tests with Katalon Studio.prj" \
-                     -retry=0 -testSuitePath="Test Suites/Open App" -browserType="Android" -deviceId="2bc37605" -executionProfile="default" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true \
+                     -retry=0 -testSuitePath="Test Suites/Open App" -browserType="Android" -deviceId="2bc37605" -executionProfile="default" \
+                      --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true \
                      -appiumDirectory="/Users/nguyenduy/.nvm/versions/node/v24.11.0/lib/node_modules/appium"
                     """
             }
