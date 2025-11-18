@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    options {
+        timestamps()          // Hiển thị thời gian trong log
+        ansiColor('xterm')     // Màu sắc log
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -27,12 +31,45 @@ pipeline {
         }
     }
 
+    stage('Publish JUnit to Dashboard') {
+        steps {
+            echo "Publishing JUnit report..."
+            junit allowEmptyResults: true, testResults: "Reports/**/*.xml"
+        }
+    }
+
+    stage('Publish HTML Report') {
+            steps {
+                echo "Publishing HTML report..."
+                publishHTML(target: [
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: "Reports",
+                    reportFiles: "report.html",
+                    reportName: "Katalon HTML Report"
+                ])
+            }
+        }
+
+        stage('Archive All Reports') {
+            steps {
+                echo "Archiving reports, logs, screenshots..."
+                archiveArtifacts artifacts: "Reports/**/*", fingerprint: true
+            }
+        }
+    }
+
     post {
-        failure {
-            echo 'Katalon tests failed!'
+        always {
+            echo "===== FINAL SUMMARY ====="
+            echo "Build finished. Reports archived at: ${env.WORKSPACE}/Reports"
         }
         success {
-            echo 'Katalon tests succeeded!'
+            echo "BUILD PASSED 🎉"
+        }
+        failure {
+            echo "BUILD FAILED ❌ — Check JUnit & HTML reports."
         }
     }
 }
