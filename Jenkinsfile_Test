@@ -29,16 +29,22 @@ pipeline {
                     """
             }
         }
-    }
 
-    stage('Publish JUnit to Dashboard') {
-        steps {
-            echo "Publishing JUnit report..."
-            junit allowEmptyResults: true, testResults: "Reports/**/*.xml"
+        stage('Archive All Reports') {
+            steps {
+                echo "Archiving reports, logs, screenshots..."
+                archiveArtifacts artifacts: "Reports/**/*", fingerprint: true
+            }
         }
-    }
 
-    stage('Publish HTML Report') {
+        stage('Publish JUnit to Dashboard') {
+            steps {
+                echo "Publishing JUnit report..."
+                junit allowEmptyResults: true, testResults: "Reports/**/*.xml"
+            }
+        }
+
+        stage('Publish HTML Report') {
             steps {
                 echo "Publishing HTML report..."
                 publishHTML(target: [
@@ -51,14 +57,9 @@ pipeline {
                 ])
             }
         }
-
-        stage('Archive All Reports') {
-            steps {
-                echo "Archiving reports, logs, screenshots..."
-                archiveArtifacts artifacts: "Reports/**/*", fingerprint: true
-            }
-        }
     }
+
+    
 
     post {
         always {
