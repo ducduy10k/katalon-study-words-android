@@ -1,30 +1,85 @@
-# Compiled class file
+############################################
+# Java & Build
+############################################
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.ear
 *.zip
 *.tar.gz
 *.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+*.log
 hs_err_pid*
 
+############################################
+# Katalon Generated / Auto files
+############################################
 Libs/TempTestCase*.groovy
 Libs/TempTestSuite*.groovy
-Reports
+Libs/
+
+Reports/
+*/Reports/
+
+.settings/
+settings/
+settings/**
+settings/internal/com.kms.katalon.composer.mobile.settings.properties
 settings/internal/com.kms.katalon.integration.analytics.properties
 settings/internal/com.kms.katalon.integration.jira.properties
+
+bin/
+build/
+out/
+.cache/
 .cache
+
+.classpath
+.project
+*.properties
+*.iml
+
+Plugins/
+plugins/
+
+############################################
+# Temporary files
+############################################
+*.tmp
+*.temp
+*.swp
+
+############################################
+# macOS trash files
+############################################
 .DS_Store
+*/.DS_Store
+
+############################################
+# Object Repository garbage
+############################################
+Object\ Repository/.DS_Store
+
+############################################
+# Test Listeners
+############################################
+Test\ Listeners/*.tmp
+Test\ Listeners/*.log
+
+############################################
+# Gradle
+############################################
+.gradle/
+
+############################################
+# Misc
+############################################
+output
+!output/.gitkeep
+
+.svn/
+
+############################################
+# Reports stray artifacts
+############################################
+Reports"
