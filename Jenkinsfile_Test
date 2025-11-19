@@ -54,13 +54,13 @@ pipeline {
 
             // 🔥 Publish HTML report Katalon
             publishHTML(target: [
-                allowMissing: true,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: "Reports",
-                reportFiles: "report.html",
-                reportName: "Katalon HTML Report"
-            ])
+			    allowMissing: true,
+			    alwaysLinkToLastBuild: true,
+			    keepAll: true,
+			    reportDir: "Reports",
+			    reportFiles: "**/*.html",
+			    reportName: "Katalon HTML Report"
+			])
 
             echo "Build finished. Reports archived at: ${env.WORKSPACE}/Reports"
         }
